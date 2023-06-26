@@ -25,12 +25,12 @@ from rest_framework.generics import (
 
 @api_view(['GET'])
 def saludar(request):
-    return JsonResponse({'hola':'http://localhost:8000/media/img_0.jpg'})
+    return JsonResponse({'hola':'https://web-production-1728.up.railway.app/media/img_0.jpg'})
 
 @api_view(['GET'])
 def get_image(request):
     # Devolver la ruta de la imagen generada como respuesta HTTP
-    return JsonResponse({'imagen': 'http://localhost:8000/media/img_0.jpg'})
+    return JsonResponse({'imagen': 'https://web-production-1728.up.railway.app/media/img_0.jpg'})
 
 @api_view(['POST'])
 def create_image(request):
