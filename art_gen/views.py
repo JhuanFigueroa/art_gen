@@ -8,7 +8,6 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import random
 import os
-import cv2
 from PIL import Image
 #django
 from django.shortcuts import render
