@@ -25,4 +25,5 @@ urlpatterns = [
     path("",views.get_image),
     path("obtener/",views.get_image),
     path("generar/",views.create_image),
+     path("generar2/",views.serve_image),
 ]+ static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

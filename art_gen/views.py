@@ -1,6 +1,7 @@
 #python
 import tensorflow as tf
-
+from numpy.random import randn
+from keras.models import load_model
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -22,6 +23,22 @@ from rest_framework import status
 from rest_framework.generics import (
     ListAPIView,
     CreateAPIView,)
+model=load_model('generator_model_100.h5')
+
+def generate_image():
+    latent_dim = 100
+    latent_points = randn(latent_dim)
+    x_input = latent_points.reshape(1, latent_dim)
+    X = model.predict(x_input)
+    array = np.array(X.reshape(100, 100, 3), dtype=np.uint8)
+    image = Image.fromarray(array)
+    return image
+
+@api_view(['GET'])
+def serve_image(request):
+    image = generate_image()
+    image.save("./media/generated_image.jpg")  # Guarda la imagen generada en un archivo
+    return JsonResponse({"imagen": "https://web-production-1728.up.railway.app/media/generated_image.jpg"})
 
 @api_view(['GET'])
 def saludar(request):
